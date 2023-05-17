@@ -12,18 +12,18 @@ public class DashboardPage {
     private ElementsCollection cardsCollection = $$x("//li[@class='list__item']/div[@data-test-id]");
     private ElementsCollection buttonsCollection = $$x("//button[@data-test-id='action-deposit']");
 
-    private int cardBalance; // ñîõðàíÿåò áàëàíñ íà ðàññìàòðèâàåìîé êàðòå
+    private int cardBalance; // ÑÐ¾Ñ…Ñ€Ð°Ð½ÑÐµÑ‚ Ð±Ð°Ð»Ð°Ð½Ñ Ð½Ð° Ñ€Ð°ÑÑÐ¼Ð°Ñ‚Ñ€Ð¸Ð²Ð°ÐµÐ¼Ð¾Ð¹ ÐºÐ°Ñ€Ñ‚Ðµ
 
-    private String cardText; // ñîõðàíÿåò îòîáðàæàåìûé íà ñòðàíèöå òåêñò íàéäåííîãî ýëåìåíòà, èç êîòîðîãî äàëåå áóäåì ïîëó÷àòü áàëàíñ
+    private String cardText; // ÑÐ¾Ñ…Ñ€Ð°Ð½ÑÐµÑ‚ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°ÐµÐ¼Ñ‹Ð¹ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ñ‚ÐµÐºÑÑ‚ Ð½Ð°Ð¹Ð´ÐµÐ½Ð½Ð¾Ð³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°, Ð¸Ð· ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð³Ð¾ Ð´Ð°Ð»ÐµÐµ Ð±ÑƒÐ´ÐµÐ¼ Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÑŒ Ð±Ð°Ð»Ð°Ð½Ñ
 
-    private final String inSubstr = "áàëàíñ: ";
-    private final String outSubstr = " ð.";
+    private final String inSubstr = "Ð±Ð°Ð»Ð°Ð½Ñ: ";
+    private final String outSubstr = " Ñ€.";
 
-    private String[] userCards = new String[2]; // çàâîäèì ìàññèâ ñ íîìåðàìè êàðò äëÿ ïåðåâîäîâ
+    private String[] userCards = new String[2]; // Ð·Ð°Ð²Ð¾Ð´Ð¸Ð¼ Ð¼Ð°ÑÑÐ¸Ð² Ñ Ð½Ð¾Ð¼ÐµÑ€Ð°Ð¼Ð¸ ÐºÐ°Ñ€Ñ‚ Ð´Ð»Ñ Ð¿ÐµÑ€ÐµÐ²Ð¾Ð´Ð¾Ð²
 
-    public int retrieveBalanceForCardByPosition(int cardPosition) { // â òåñòàõ ìû áóäåì îáðàùàòüñÿ ê êàðòàì ïî ïîçèöèè íà ñòðàíèöå (ïåðâàÿ - âòîðàÿ, 1 - 2)
+    public int retrieveBalanceForCardByPosition(int cardPosition) { // Ð² Ñ‚ÐµÑÑ‚Ð°Ñ… Ð¼Ñ‹ Ð±ÑƒÐ´ÐµÐ¼ Ð¾Ð±Ñ€Ð°Ñ‰Ð°Ñ‚ÑŒÑÑ Ðº ÐºÐ°Ñ€Ñ‚Ð°Ð¼ Ð¿Ð¾ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ (Ð¿ÐµÑ€Ð²Ð°Ñ - Ð²Ñ‚Ð¾Ñ€Ð°Ñ, 1 - 2)
         if (cardPosition == 1) {
-            cardText = cardsCollection.first().getText(); // ïîëó÷àåì òåêñò íóæíîãî ýëåìåíòà
+            cardText = cardsCollection.first().getText(); // Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ñ‚ÐµÐºÑÑ‚ Ð½ÑƒÐ¶Ð½Ð¾Ð³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°
         } else {
             cardText = cardsCollection.last().getText();
         }
@@ -36,24 +36,24 @@ public class DashboardPage {
     }
 
     public void topupBalanceForCardByPosition(int cardPosition, int sumToAdd) {
-        cardPosition = cardPosition - 1; // ïîäãîòàâëèâàåì ïîçèöèþ êàðòû äëÿ äàëüíåéøèõ ìàíèïóëÿöèé
+        cardPosition = cardPosition - 1; // Ð¿Ð¾Ð´Ð³Ð¾Ñ‚Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ ÐºÐ°Ñ€Ñ‚Ñ‹ Ð´Ð»Ñ Ð´Ð°Ð»ÑŒÐ½ÐµÐ¹ÑˆÐ¸Ñ… Ð¼Ð°Ð½Ð¸Ð¿ÑƒÐ»ÑÑ†Ð¸Ð¹
         String sum4input = Integer.toString(sumToAdd);
-        int otherCardBalance = retrieveBalanceForCardByPosition((cardPosition-1)*-1); // ñóììà íóæíà äëÿ ïðîâåðêè óñëîâèé íà÷àëà îïåðàöèè
-        // òàêàÿ êîíñòðóêöèÿ ïîçâîëÿåò íàì èçâëå÷ü áàëàíñ äëÿ âòîðîé êàðòû, ïîëó÷èâ å¸ èíäåêñ îò ïåðâîé (1 -> 0, 0 -> 1)
+        int otherCardBalance = retrieveBalanceForCardByPosition((cardPosition-1)*-1); // ÑÑƒÐ¼Ð¼Ð° Ð½ÑƒÐ¶Ð½Ð° Ð´Ð»Ñ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ¸ ÑƒÑÐ»Ð¾Ð²Ð¸Ð¹ Ð½Ð°Ñ‡Ð°Ð»Ð° Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸
+        // Ñ‚Ð°ÐºÐ°Ñ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ†Ð¸Ñ Ð¿Ð¾Ð·Ð²Ð¾Ð»ÑÐµÑ‚ Ð½Ð°Ð¼ Ð¸Ð·Ð²Ð»ÐµÑ‡ÑŒ Ð±Ð°Ð»Ð°Ð½Ñ Ð´Ð»Ñ Ð²Ñ‚Ð¾Ñ€Ð¾Ð¹ ÐºÐ°Ñ€Ñ‚Ñ‹, Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð² ÐµÑ‘ Ð¸Ð½Ð´ÐµÐºÑ Ð¾Ñ‚ Ð¿ÐµÑ€Ð²Ð¾Ð¹ (1 -> 0, 0 -> 1)
 
         userCards[0] = MrDataHelper.generateDefaultUser().getUserCardFirstNumber();
         userCards[1] = MrDataHelper.generateDefaultUser().getUserCardSecondNumber();
 
-        if (otherCardBalance < sumToAdd) { // âøèâàåì ïðîâåðêó, ÷òîá ñóììà ïîïîëíåíèÿ íå ïðåâûøàëà áàëàíñà âòîðîé êàðòû
+        if (otherCardBalance < sumToAdd) { // Ð²ÑˆÐ¸Ð²Ð°ÐµÐ¼ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÑƒ, Ñ‡Ñ‚Ð¾Ð± ÑÑƒÐ¼Ð¼Ð° Ð¿Ð¾Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ Ð½Ðµ Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°Ð»Ð° Ð±Ð°Ð»Ð°Ð½ÑÐ° Ð²Ñ‚Ð¾Ñ€Ð¾Ð¹ ÐºÐ°Ñ€Ñ‚Ñ‹
             sumToAdd = otherCardBalance;
         }
 
-        buttonsCollection.get(cardPosition).click(); // îòïðàâëÿåì êëèê ïî êíîïêå ñîîòâåòñòâóþùåé êàðòû
+        buttonsCollection.get(cardPosition).click(); // Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÐ¼ ÐºÐ»Ð¸Ðº Ð¿Ð¾ ÐºÐ½Ð¾Ð¿ÐºÐµ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ¹ ÐºÐ°Ñ€Ñ‚Ñ‹
         $x("//button[@data-test-id='action-transfer']").should(Condition.visible);
         $x("//div[@data-test-id='amount']/descendant::input[@class='input__control']").setValue(sum4input);
         $x("//span[@data-test-id='from']/descendant::input[@class='input__control']").setValue(userCards[(cardPosition-1)*-1]);
-        // òàêèì îáðàçîì ìû ââåëè íîìåð äðóãîé êàðòû èç ñîçäàííîãî âûøå ìàññèâà
-        $x("//button[@data-test-id='action-transfer']").click(); // îòïðàâëÿåì êëèê ïî êíîïêå "Ïîïîëíèòü"
-        $x("//h2[@data-test-id='dashboard']").shouldBe(Condition.visible); // ïðîâåðÿåì, ñëó÷èëñÿ ëè ïåðåõîä íà ïðåäûäóùóþ ñòðàíèöó (â ðàçäåë "Âàøè êàðòû")
+        // Ñ‚Ð°ÐºÐ¸Ð¼ Ð¾Ð±Ñ€Ð°Ð·Ð¾Ð¼ Ð¼Ñ‹ Ð²Ð²ÐµÐ»Ð¸ Ð½Ð¾Ð¼ÐµÑ€ Ð´Ñ€ÑƒÐ³Ð¾Ð¹ ÐºÐ°Ñ€Ñ‚Ñ‹ Ð¸Ð· ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð²Ñ‹ÑˆÐµ Ð¼Ð°ÑÑÐ¸Ð²Ð°
+        $x("//button[@data-test-id='action-transfer']").click(); // Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÐ¼ ÐºÐ»Ð¸Ðº Ð¿Ð¾ ÐºÐ½Ð¾Ð¿ÐºÐµ "ÐŸÐ¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ"
+        $x("//h2[@data-test-id='dashboard']").shouldBe(Condition.visible); // Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼, ÑÐ»ÑƒÑ‡Ð¸Ð»ÑÑ Ð»Ð¸ Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´ Ð½Ð° Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ (Ð² Ñ€Ð°Ð·Ð´ÐµÐ» "Ð’Ð°ÑˆÐ¸ ÐºÐ°Ñ€Ñ‚Ñ‹")
     }
 }
