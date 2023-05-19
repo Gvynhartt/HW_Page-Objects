@@ -12,7 +12,10 @@ public class VerificationCodePage {
     private String continueXpath = "//button[@data-test-id='action-verify']/span[@class='button__content']";
 
     public DashboardPage enterVerificationCode() {
-        $x(codeXpath).setValue(MrDataHelper.generateDefaultUser().getUserCode());
+        MrDataHelper.NewUserEntry defaultVasya = MrDataHelper.generateDefaultUser();
+        MrDataHelper.VerificationCode newCode = MrDataHelper.generateVerificationCode(defaultVasya);
+        String code4input = newCode.toString(); // та самая краткость и читаемость кода, именно так
+        $x(codeXpath).setValue(code4input);
         $x(continueXpath).click();
         sleep(5000);
         String actualUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
