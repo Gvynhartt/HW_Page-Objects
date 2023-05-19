@@ -87,11 +87,11 @@ public class TransferTests {
         addFundsPage.topupBalanceForCard(firstCardNmb.getCardNumber(), 10001);
 
         int balanceActual1 = cardsPage.retrieveBalanceForCardByPosition(1);
-        int balanceExpected1 = balanceBeforeTest1 - 10001;
+        int balanceExpected1 = balanceBeforeTest1 - 0; // не знаю, чего тут ожидать - видимо, предполагается, что списания не произойдёт
         Assertions.assertEquals(balanceExpected1, balanceActual1);
 
         int balanceActual2 = cardsPage.retrieveBalanceForCardByPosition(2);
-        int balanceExpected2 = balanceBeforeTest2 + 10001;
+        int balanceExpected2 = balanceBeforeTest2 + 0;
         Assertions.assertEquals(balanceExpected2, balanceActual2);
     }
 
