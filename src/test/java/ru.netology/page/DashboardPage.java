@@ -21,11 +21,6 @@ public class DashboardPage {
 
 
     public static int retrieveBalanceForCardByPosition(int cardPosition) { // в тестах мы будем обращаться к картам по позиции на странице (первая - вторая, 1 - 2)
-//        if (cardPosition == 1) {
-//            cardText = cardsCollection.first().getText(); // получаем текст нужного элемента
-//        } else {
-//            cardText = cardsCollection.last().getText();
-//        }
         cardPosition = cardPosition - 1;
 
         cardText = cardsCollection.get(cardPosition).getText();
@@ -41,7 +36,6 @@ public class DashboardPage {
         cardPosition = cardPosition - 1;
         buttonsCollection.get(cardPosition).click(); // т. к. коллекция из кнопок карт уже создана, не пропадать же добру
         $x("//button[@data-test-id='action-transfer']").shouldBe(Condition.visible);
-        sleep(5000);
         return new TransferPage();
     }
 

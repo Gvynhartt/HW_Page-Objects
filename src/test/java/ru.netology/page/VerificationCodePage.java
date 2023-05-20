@@ -17,7 +17,6 @@ public class VerificationCodePage {
         String code4input = newCode.toString(); // та самая краткость и читаемость кода, именно так
         $x(codeXpath).setValue(code4input);
         $x(continueXpath).click();
-        sleep(5000);
         String actualUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
         String expectedUrl = "http://localhost:9999/dashboard";
         Assertions.assertEquals(expectedUrl, actualUrl);

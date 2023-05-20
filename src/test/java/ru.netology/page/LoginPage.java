@@ -1,11 +1,14 @@
 package ru.netology.page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.Assertions;
 import ru.netology.data.MrDataHelper;
 
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.sleep;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LoginPage {
     private String loginXpath = "//span[@data-test-id='login']/descendant::input[@name='login']";
@@ -16,10 +19,8 @@ public class LoginPage {
         $x(loginXpath).setValue(MrDataHelper.generateDefaultUser().getUserLogin());
         $x(passwordXpath).setValue(MrDataHelper.generateDefaultUser().getUserPassword());
         $x(continueXpath).click();
-        sleep(5000);
-        String actualUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        String expectedUrl = "http://localhost:9999/verification";
-        Assertions.assertEquals(expectedUrl, actualUrl);
+        $x("//span[@data-test-id='code']").shouldBe(Condition.visible, Duration.ofMillis(5000));
+        // здесь ожидание перехода на URL заменена проверкой видимости элемента
         return new VerificationCodePage();
     }
 }
