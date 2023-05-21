@@ -10,14 +10,11 @@ public class TransferPage {
 
     public DashboardPage topupBalanceForCard(String cardNumber, int sumToAdd) {
         String sum4input = Integer.toString(sumToAdd);
-
+        $x("//button[@data-test-id='action-transfer']").shouldBe(Condition.visible);
         $x("//div[@data-test-id='amount']/descendant::input[@class='input__control']").setValue(sum4input);
         $x("//span[@data-test-id='from']/descendant::input[@class='input__control']").setValue(cardNumber);
         // таким образом мы ввели номер другой карты из созданного выше массива
         $x("//button[@data-test-id='action-transfer']").click(); // отправляем клик по кнопке "Пополнить"
-        // На прошлых страницах мы проверяли после совершения нужных манипуляций видимость URL/элементов со следующей страницы.
-        // Тут мы после пополнения должны перейти обратно в дашборд, видимость элемента которого мы и проверяем.
-        // Чем эта проверка принципиально отличается от другмх?
         return new DashboardPage();
     }
 }

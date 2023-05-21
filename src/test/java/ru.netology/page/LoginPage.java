@@ -19,8 +19,6 @@ public class LoginPage {
         $x(loginXpath).setValue(MrDataHelper.generateDefaultUser().getUserLogin());
         $x(passwordXpath).setValue(MrDataHelper.generateDefaultUser().getUserPassword());
         $x(continueXpath).click();
-        $x("//span[@data-test-id='code']").shouldBe(Condition.visible, Duration.ofMillis(5000));
-        // здесь ожидание перехода на URL заменена проверкой видимости элемента
         return new VerificationCodePage();
     }
 }

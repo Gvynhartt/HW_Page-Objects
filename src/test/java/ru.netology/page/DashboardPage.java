@@ -35,7 +35,6 @@ public class DashboardPage {
     public TransferPage proceedToTransferPage(int cardPosition) {
         cardPosition = cardPosition - 1;
         buttonsCollection.get(cardPosition).click(); // т. к. коллекция из кнопок карт уже создана, не пропадать же добру
-        $x("//button[@data-test-id='action-transfer']").shouldBe(Condition.visible);
         return new TransferPage();
     }
 
